@@ -25,6 +25,10 @@ namespace MyBlog.Web.Controllers
         [HttpPost]
         public ActionResult Create(CreatePostModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
             return Content("OK");
         }
     }

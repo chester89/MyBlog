@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using FluentValidation.Mvc;
 
 namespace MyBlog.Web
 {
@@ -32,6 +33,22 @@ namespace MyBlog.Web
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+
+            DependencyResolver.SetResolver(new StructureMapDependencyResolver());
+
+            FluentValidationModelValidatorProvider.Configure(cfg =>
+            {
+                cfg.ValidatorFactory = new StructureMapValidatorFactory(new FluentValidationRegistry());
+            });
+        }
+
+        protected void Application_EndRequest()
+        {
+            dynamic resolver = DependencyResolver.Current;
+            if (resolver is StructureMapDependencyResolver)
+            {
+                resolver.DisposeOfHttpCachedObjects();
+            }
         }
     }
 }
