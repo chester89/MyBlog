@@ -4,16 +4,33 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MyBlog.Core;
+using MyBlog.Core.Contracts;
+using MyBlog.Core.Entities;
 using MyBlog.Web.Models;
 
 namespace MyBlog.Web.Controllers
 {
     public class PostsController: Controller
     {
-        [HttpGet]
-        public ActionResult List(string blogName)
+        private readonly IRepository<BlogPost> postRepository;
+
+        public PostsController(IRepository<BlogPost> postRepository)
         {
-            return Content("OK");
+            this.postRepository = postRepository;
+        }
+
+        [HttpGet]
+        public ActionResult Default(int id)
+        {
+            var post = postRepository.Get(id);
+            return View(PostModel.FromSource(post));
+        }
+
+        [HttpGet]
+        public ActionResult List()
+        {
+            var posts = postRepository.GetAll().Take(20).AsEnumerable().OrderByDescending(p => p.Created.ToDateTimeUtc());
+            return View(new PostListModel(posts));
         }
 
         [HttpGet]
@@ -29,7 +46,10 @@ namespace MyBlog.Web.Controllers
             {
                 return View(model);
             }
-            return Content("OK");
+
+            postRepository.Add(model.GetDomainObject());
+
+            return RedirectToAction("List");
         }
     }
 }
