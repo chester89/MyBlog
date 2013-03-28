@@ -9,6 +9,7 @@ namespace MyBlog.Web.Models
     {
         public string Text { get; set; }
         public string Title { get; set; }
-        public Decimal Timestamp { get; set; }
+        public string Tags { get; set; }
+        public string TimeZoneId { get; set; }
     }
 }

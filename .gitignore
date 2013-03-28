@@ -8,6 +8,7 @@ _ReSharper*
 dist
 output
 build
+.idea
 
 *.DotSettings.user
 *.csproj.user

@@ -10,28 +10,43 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        var viewModel = new createPostViewModel();
-        viewModel.getCoordinates(@Model.Timestamp);
+        var viewModel = new createPostViewModel('/services/coordinates', '/services/timezone', '@Messages.Posts_Create_TimeZoneIsLoading', '@Messages.Posts_Create_TimeZoneTemplate');
+        viewModel.getCoordinates();
         ko.applyBindings(viewModel);
     });
 </script>
 
-<form class="form-horizontal" action="@Url.Action("Create")">
-    <p>
-        <span data-bind="text: timeZoneAndLocation" />
+<form class="form-horizontal" action="@Url.Action("Create")" method="POST">
+    <div data-bind="text: timeZoneAndLocation"></div>
+    <div data-bind="if: timeZoneLoaded">
+        <input type="hidden" name="TimeZoneId" data-bind="value: timeZoneId" />
+    </div>
+    <p class="lead">
+        @Messages.Posts_Create_Title
     </p>
 
     <div class="control-group">
         <label class="control-label" for="Title">@Messages.Posts_Create_TitleLabel</label>
         <div class="controls">
-            @Html.TextBoxFor(x => x.Title)
+            @Html.TextBoxFor(x => x.Title, new { @class = "input-xxlarge" })
         </div>
     </div>
     
     <div class="control-group">
         <label class="control-label" for="Text">@Messages.Posts_Create_TextLabel</label>
         <div class="controls">
-            @Html.TextAreaFor(x => x.Text, 10, 10, null)
+            @Html.TextAreaFor(x => x.Text, 10, 20, new { @class = "input-xxlarge" })
         </div>
     </div>
+
+     <div class="control-group">
+         <label class="control-label" for="Tags">@Messages.Posts_Create_TagsLabel</label>
+         <div class="controls">
+             @Html.TextBoxFor(x => x.Tags, new { @class = "input-xxlarge" })
+         </div>
+     </div>
+
+     <div class="controls">
+     <button type="submit" class="btn btn-primary">@Messages.Posts_Create_SubmitText</button>
+     </div>
 </form>

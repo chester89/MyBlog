@@ -19,10 +19,7 @@ namespace MyBlog.Web.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            return View(new CreatePostModel()
-                            {
-                                Timestamp = Convert.ToDecimal(Extensions.ConvertToUnixTimestamp())
-                            });
+            return View(new CreatePostModel());
         }
 
         [HttpPost]

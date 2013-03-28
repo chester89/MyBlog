@@ -126,8 +126,20 @@
   <data name="Home_PostsListLink" xml:space="preserve">
     <value>See all my blog posts</value>
   </data>
+  <data name="Posts_Create_SubmitText" xml:space="preserve">
+    <value>Create new post</value>
+  </data>
+  <data name="Posts_Create_TagsLabel" xml:space="preserve">
+    <value>Tags:</value>
+  </data>
   <data name="Posts_Create_TextLabel" xml:space="preserve">
     <value>Text:</value>
+  </data>
+  <data name="Posts_Create_TimeZoneIsLoading" xml:space="preserve">
+    <value>Calculating your location and timezone...</value>
+  </data>
+  <data name="Posts_Create_TimeZoneTemplate" xml:space="preserve">
+    <value>You are now in {0}, {1} ({2}).</value>
   </data>
   <data name="Posts_Create_Title" xml:space="preserve">
     <value>Create new post</value>

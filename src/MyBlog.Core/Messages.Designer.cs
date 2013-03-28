@@ -88,11 +88,47 @@ namespace MyBlog.Core {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create new post.
+        /// </summary>
+        public static string Posts_Create_SubmitText {
+            get {
+                return ResourceManager.GetString("Posts_Create_SubmitText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tags:.
+        /// </summary>
+        public static string Posts_Create_TagsLabel {
+            get {
+                return ResourceManager.GetString("Posts_Create_TagsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Text:.
         /// </summary>
         public static string Posts_Create_TextLabel {
             get {
                 return ResourceManager.GetString("Posts_Create_TextLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Calculating your location and timezone....
+        /// </summary>
+        public static string Posts_Create_TimeZoneIsLoading {
+            get {
+                return ResourceManager.GetString("Posts_Create_TimeZoneIsLoading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are now in {0}, {1} ({2})..
+        /// </summary>
+        public static string Posts_Create_TimeZoneTemplate {
+            get {
+                return ResourceManager.GetString("Posts_Create_TimeZoneTemplate", resourceCulture);
             }
         }
         
