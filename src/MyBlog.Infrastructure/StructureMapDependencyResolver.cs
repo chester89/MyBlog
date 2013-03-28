@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using StructureMap;
 using StructureMap.Pipeline;
 
-namespace MyBlog.Web
+namespace MyBlog.Infrastructure
 {
     public class StructureMapDependencyResolver : IDependencyResolver
     {

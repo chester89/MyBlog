@@ -9,7 +9,7 @@ using NHibernate.Tool.hbm2ddl;
 
 namespace MyBlog.Data.Repositories
 {
-    public abstract class NhRepositoryBase<T> : IRepository<T> where T : class
+    public class NhRepositoryBase<T> : IRepository<T> where T : class
     {
         protected readonly ISession Session;
         protected static bool autoCreateDb;

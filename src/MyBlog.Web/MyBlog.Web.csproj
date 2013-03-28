@@ -86,14 +86,11 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PostsController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
-    <Compile Include="FluentValidationRegistry.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CreatePostModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StructureMapDependencyResolver.cs" />
-    <Compile Include="StructureMapValidatorFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-responsive.css" />
@@ -166,7 +163,6 @@
     <Content Include="Scripts\ViewModels\createPostVm.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
-    <Content Include="Scripts\jquery-1.9.1.min.map" />
     <Content Include="Scripts\jquery-ui-1.8.20.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
     <Content Include="Scripts\knockout-2.2.1.debug.js" />
@@ -195,6 +191,10 @@
     <ProjectReference Include="..\MyBlog.Core\MyBlog.Core.csproj">
       <Project>{c177d45d-b015-4cfa-a933-399df072c356}</Project>
       <Name>MyBlog.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyBlog.Infrastructure\MyBlog.Infrastructure.csproj">
+      <Project>{31E23412-2014-4977-B9FD-72280FDF2C80}</Project>
+      <Name>MyBlog.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

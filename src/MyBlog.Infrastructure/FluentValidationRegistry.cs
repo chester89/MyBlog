@@ -5,7 +5,7 @@ using System.Web;
 using FluentValidation;
 using StructureMap.Configuration.DSL;
 
-namespace MyBlog.Web
+namespace MyBlog.Infrastructure
 {
     public class FluentValidationRegistry : Registry
     {
