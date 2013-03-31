@@ -149,5 +149,14 @@ namespace MyBlog.Core {
                 return ResourceManager.GetString("Posts_Create_TitleLabel", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your post will be available here:.
+        /// </summary>
+        public static string Posts_Create_UrlPreview {
+            get {
+                return ResourceManager.GetString("Posts_Create_UrlPreview", resourceCulture);
+            }
+        }
     }
 }

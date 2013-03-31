@@ -44,6 +44,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\IRepository.cs" />
+    <Compile Include="Contracts\IShortenAlgorithm.cs" />
+    <Compile Include="Contracts\ISlugService.cs" />
     <Compile Include="Entities\Blog.cs" />
     <Compile Include="Entities\BlogPost.cs" />
     <Compile Include="Extensions.cs" />

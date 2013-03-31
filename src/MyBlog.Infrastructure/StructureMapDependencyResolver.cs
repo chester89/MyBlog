@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using StructureMap;
+using StructureMap.Configuration.DSL;
 using StructureMap.Pipeline;
 
 namespace MyBlog.Infrastructure
@@ -12,9 +13,10 @@ namespace MyBlog.Infrastructure
     {
         private readonly IContainer container;
 
-        public StructureMapDependencyResolver()
+        public StructureMapDependencyResolver(Registry registry)
         {
-            container = new Container();
+            container = new Container(registry);
+            container.Configure(x => x.AddRegistry<NhRegistry>());
         }
 
         public object GetService(Type serviceType)

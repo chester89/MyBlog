@@ -87,6 +87,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\SlugToIdAttribute.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PostsController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
@@ -96,6 +97,8 @@
     <Compile Include="Models\CreatePostModel.cs" />
     <Compile Include="Models\PostListModel.cs" />
     <Compile Include="Models\PostModel.cs" />
+    <Compile Include="MvcHtmlStringExtensions.cs" />
+    <Compile Include="MvcRegistry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -147,4 +147,7 @@
   <data name="Posts_Create_TitleLabel" xml:space="preserve">
     <value>Title:</value>
   </data>
+  <data name="Posts_Create_UrlPreview" xml:space="preserve">
+    <value>Your post will be available here:</value>
+  </data>
 </root>

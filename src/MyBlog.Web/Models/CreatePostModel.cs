@@ -22,6 +22,9 @@ namespace MyBlog.Web.Models
         public string Title { get; set; }
         public string Tags { get; set; }
         public string TimeZoneId { get; set; }
+        public string Slug { get; set; }
+        public DateTime Started { get; set; }
+        public DateTime Finished { get; set; }
 
         public override BlogPost GetDomainObject()
         {

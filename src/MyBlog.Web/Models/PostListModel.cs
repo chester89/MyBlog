@@ -13,7 +13,6 @@ namespace MyBlog.Web.Models
 
         public PostListModel(IEnumerable<BlogPost> posts)
         {
-            Mapper.CreateMap<BlogPost, PostModel>();
             Posts = Mapper.Map<IEnumerable<BlogPost>, IEnumerable<PostModel>>(posts).ToList();
         }
     }

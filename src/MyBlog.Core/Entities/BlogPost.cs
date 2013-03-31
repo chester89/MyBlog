@@ -23,6 +23,7 @@ namespace MyBlog.Core.Entities
         public virtual string Title { get; set; }
         public virtual string Text { get; set; }
         public virtual string Tags { get; set; }
+        public virtual string Slug { get; set; }
 
         public virtual void SetCreated(DateTime dateTime, string timeZone)
         {

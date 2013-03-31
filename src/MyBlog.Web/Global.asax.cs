@@ -4,8 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using AutoMapper;
 using FluentValidation.Mvc;
+using MyBlog.Core.Entities;
 using MyBlog.Infrastructure;
+using MyBlog.Web.Models;
 
 namespace MyBlog.Web
 {
@@ -19,6 +22,12 @@ namespace MyBlog.Web
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+            routes.MapRoute(
+              "PostSlug", // Route name
+              "blog/{slug}", // URL with parameters
+              new { controller = "Posts", action = "Default" } // Parameter defaults
+            );
 
             routes.MapRoute(
                 "Default", // Route name
@@ -35,12 +44,19 @@ namespace MyBlog.Web
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
 
-            DependencyResolver.SetResolver(new StructureMapDependencyResolver());
+            DependencyResolver.SetResolver(new StructureMapDependencyResolver(new MvcRegistry()));
 
             FluentValidationModelValidatorProvider.Configure(cfg =>
             {
                 cfg.ValidatorFactory = new StructureMapValidatorFactory(new FluentValidationRegistry());
             });
+
+            ConfigureAutoMapper();
+        }
+
+        void ConfigureAutoMapper()
+        {
+            Mapper.CreateMap<BlogPost, PostModel>();
         }
 
         protected void Application_EndRequest()
