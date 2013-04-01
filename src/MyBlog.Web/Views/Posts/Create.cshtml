@@ -11,7 +11,7 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        var viewModel = new createPostViewModel('/services/coordinates', '/services/timezone', 'services/postslug', 
+        var viewModel = new createPostViewModel('/services/coordinates', '/services/timezone', '/services/postslug',
             '@Messages.Posts_Create_TimeZoneIsLoading', '@Messages.Posts_Create_TimeZoneTemplate');
         viewModel.getCoordinates();
         ko.applyBindings(viewModel);
@@ -22,8 +22,7 @@
     <div data-bind="text: timeZoneAndLocation"></div>
     <div data-bind="if: timeZoneLoaded">
         <input type="hidden" name="TimeZoneId" data-bind="value: timeZoneId" />
-        <input type="hidden" name="Started" data-bind="value: startedAt" />
-        <input type="hidden" name="Finished" data-bind="value: finishedAt" />
+        <input type="hidden" name="Posted" data-bind="value: localDateTime" />
     </div>
     <input type="hidden" name="Slug" data-bind="value: slug"/>
     <p class="lead">
@@ -36,16 +35,19 @@
             @Html.TextBoxFor(x => x.Title, new { @class = "input-xxlarge"}).DataBind("value: title")
         </div>
     </div>
-    
+    <div class="control-group" data-bind="if: slugLoaded">
+        <label class="control-label" for="UrlPreview">@Messages.Posts_Create_UrlPreview</label>
+        <div class="controls">
+            <span id="UrlPreview" data-bind="text: urlPreview"></span>
+        </div>
+    </div>
     <div class="control-group">
         <label class="control-label" for="Text">@Messages.Posts_Create_TextLabel</label>
         <div class="controls">
             @Html.TextAreaFor(x => x.Text, 10, 20, new { @class = "input-xxlarge" })
         </div>
     </div>
-    <div data-bind="if: slugLoaded">
-        @Messages.Posts_Create_UrlPreview <div data-bind="text: urlPreview"></div>
-    </div>
+
      <div class="control-group">
          <label class="control-label" for="Tags">@Messages.Posts_Create_TagsLabel</label>
          <div class="controls">
@@ -54,6 +56,6 @@
      </div>
 
      <div class="controls">
-     <button type="submit" class="btn btn-primary" data-bind="click: finishPost">@Messages.Posts_Create_SubmitText</button>
+     <button type="submit" class="btn btn-primary">@Messages.Posts_Create_SubmitText</button>
      </div>
 </form>

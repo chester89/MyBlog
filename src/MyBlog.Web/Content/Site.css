@@ -73,3 +73,12 @@ textarea
 {
     display: none;
 }
+
+/*.form-horizontal .control-label {*/
+    /*float: left;*/
+    /*width: 250px!important;*/
+    /*padding-top: 5px;*/
+    /*margin-left: 5px!important;*/
+    /*margin-right: 5px!important;*/
+    /*text-align: right;*/
+/*}*/

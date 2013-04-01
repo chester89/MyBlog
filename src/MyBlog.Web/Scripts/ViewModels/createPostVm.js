@@ -5,8 +5,7 @@
     self.title = ko.observable('');
     self.slug = ko.observable('');
     self.slugLoaded = ko.observable(false);
-    self.startedAt = ko.observable();
-    self.finishedAt = ko.observable();
+    self.localDateTime = ko.observable();
 
     self.title.subscribe(function(newValue) {
         self.generateSlug();
@@ -41,7 +40,9 @@
 
     self.finishPost = function() {
         var date = new Date();
-        self.finishedAt(date.getDate() + '.' + (date.getMonth() + 1) + '.' + date.getFullYear() + '//' +
+        self.localDateTime(date.getDate() + '.' + (date.getMonth() + 1) + '.' + date.getFullYear() + ' ' +
                     date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds());
     };
+
+    self.finishPost();
 };

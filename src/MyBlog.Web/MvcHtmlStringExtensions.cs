@@ -11,7 +11,7 @@ namespace MyBlog.Web
         public static MvcHtmlString DataBind(this MvcHtmlString source, string binding)
         {
             var result = source.ToHtmlString();
-            result = result.Substring(0, result.Length - result.LastIndexOf(' ') + 1) + "data-bind=" + binding + result.Substring(result.LastIndexOf(' ') + 1);
+            result = result.Replace("value=\"\"", string.Format("data-bind=\"{0}\"", binding));
             return MvcHtmlString.Create(result);
         }
     }

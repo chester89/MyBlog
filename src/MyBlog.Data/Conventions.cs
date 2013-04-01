@@ -25,23 +25,23 @@ namespace MyBlog.Data
         }
     }
 
-    public class CustomCascadeConvention : IHasManyConvention
-    {
-        public void Apply(IOneToManyCollectionInstance instance)
-        {
-            instance.Cascade.SaveUpdate();
-            //instance.LazyLoad();
-        }
-    }
+    //public class CustomCascadeConvention : IHasManyConvention
+    //{
+    //    public void Apply(IOneToManyCollectionInstance instance)
+    //    {
+    //        instance.Cascade.SaveUpdate();
+    //        //instance.LazyLoad();
+    //    }
+    //}
 
-    public class CustomMany2ManyCascadeConvention : IHasManyToManyConvention
-    {
-        public void Apply(IManyToManyCollectionInstance instance)
-        {
-            instance.Cascade.All();
-            //instance.LazyLoad();
-        }
-    }
+    //public class CustomMany2ManyCascadeConvention : IHasManyToManyConvention
+    //{
+    //    public void Apply(IManyToManyCollectionInstance instance)
+    //    {
+    //        instance.Cascade.All();
+    //        //instance.LazyLoad();
+    //    }
+    //}
 
     public class CustomManyToManyConvention : ManyToManyTableNameConvention
     {

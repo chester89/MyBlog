@@ -4,9 +4,10 @@
     <list default="true" id="88e182cd-0dd1-448c-ae90-d4ea8ff11b31" name="Default" comment="" />
     <ignored path="MyBlog.Web.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/createPostVm.js" changelist="88e182cd-0dd1-448c-ae90-d4ea8ff11b31" time="1364765251949" ignored="false" />
-    <file path="/Create.cshtml" changelist="88e182cd-0dd1-448c-ae90-d4ea8ff11b31" time="1364765321684" ignored="false" />
+    <file path="/createPostVm.js" changelist="88e182cd-0dd1-448c-ae90-d4ea8ff11b31" time="1364850001298" ignored="false" />
+    <file path="/Create.cshtml" changelist="88e182cd-0dd1-448c-ae90-d4ea8ff11b31" time="1364849597970" ignored="false" />
     <file path="/_Layout.cshtml" changelist="88e182cd-0dd1-448c-ae90-d4ea8ff11b31" time="1364501563682" ignored="false" />
+    <file path="/Site.css" changelist="88e182cd-0dd1-448c-ae90-d4ea8ff11b31" time="1364849883888" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +30,7 @@
       <file leaf-file-name="createPostVm.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Scripts/ViewModels/createPostVm.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="37" selection-start="399" selection-end="399" vertical-scroll-proportion="0.0">
+            <state line="46" column="22" selection-start="1871" selection-end="1871" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -38,7 +39,7 @@
       <file leaf-file-name="_Layout.cshtml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Views/Shared/_Layout.cshtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="31" selection-start="1282" selection-end="1282" vertical-scroll-proportion="0.0">
+            <state line="27" column="31" selection-start="1282" selection-end="1282" vertical-scroll-proportion="-18.321428">
               <folding />
             </state>
           </provider>
@@ -47,9 +48,9 @@
       <file leaf-file-name="Create.cshtml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Views/Posts/Create.cshtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="91" selection-start="984" selection-end="984" vertical-scroll-proportion="-0.4670433">
+            <state line="37" column="0" selection-start="1411" selection-end="1693" vertical-scroll-proportion="0.4733862">
               <folding>
-                <marker date="1364765322030" expanded="true" signature="2115:2131" placeholder="..." />
+                <marker date="1364850869047" expanded="true" signature="2188:2204" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -67,16 +68,17 @@
       <list>
         <option value="$PROJECT_DIR$/Views/Post/Create.cshtml" />
         <option value="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" />
+        <option value="$PROJECT_DIR$/Content/Site.css" />
         <option value="$PROJECT_DIR$/Scripts/ViewModels/createPostVm.js" />
         <option value="$PROJECT_DIR$/Views/Posts/Create.cshtml" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="x" value="-1928" />
+    <option name="y" value="76" />
+    <option name="width" value="1936" />
+    <option name="height" value="1096" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -204,6 +206,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MyBlog.Web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MyBlog.Web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Content" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -215,6 +231,7 @@
     <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
     <property name="recentsLimit" value="5" />
     <property name="FullScreen" value="false" />
+    <property name="GoToClass.includeJavaFiles" value="false" />
     <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
   </component>
@@ -263,13 +280,13 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-1928" y="76" width="1936" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1370067" sideWeight="0.67022413" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17764892" sideWeight="0.67022413" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -363,7 +380,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="41" column="36" selection-start="1494" selection-end="1494" vertical-scroll-proportion="0.0">
           <folding>
-            <marker date="1364765322030" expanded="true" signature="2115:2131" placeholder="..." />
+            <marker date="1364850869047" expanded="true" signature="2188:2204" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -375,25 +392,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Content/Site.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="76" column="0" selection-start="979" selection-end="1197" vertical-scroll-proportion="0.7288694">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Content/bootstrap.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1961" column="0" selection-start="34159" selection-end="34266" vertical-scroll-proportion="0.33333334">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Views/Shared/_Layout.cshtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="31" selection-start="1282" selection-end="1282" vertical-scroll-proportion="0.0">
+        <state line="27" column="31" selection-start="1282" selection-end="1282" vertical-scroll-proportion="-18.321428">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/ViewModels/createPostVm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="37" selection-start="399" selection-end="399" vertical-scroll-proportion="0.0">
+        <state line="46" column="22" selection-start="1871" selection-end="1871" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Views/Posts/Create.cshtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="91" selection-start="984" selection-end="984" vertical-scroll-proportion="-0.4670433">
+        <state line="37" column="0" selection-start="1411" selection-end="1693" vertical-scroll-proportion="0.4733862">
           <folding>
-            <marker date="1364765322030" expanded="true" signature="2115:2131" placeholder="..." />
+            <marker date="1364850869047" expanded="true" signature="2188:2204" placeholder="..." />
           </folding>
         </state>
       </provider>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using MyBlog.Core.Contracts;
@@ -16,17 +17,27 @@ namespace MyBlog.Data.Repositories
 
         static NhRepositoryBase()
         {
-            autoCreateDb = false;
+            autoCreateDb = true;
 
             if (autoCreateDb)
             {
                 var configuration = NhConfigurationHelper.GetConfiguration();
 
-                new SchemaExport(configuration).Create(true, true);
+                //new SchemaExport(configuration).Create(true, true);
+                Action<string> updateExport = x =>
+                {
+                    using (var file = new FileStream(@"D:\coding\funny.txt", FileMode.Create, FileAccess.Write))
+                    using (var sw = new StreamWriter(file))
+                    {
+                        sw.Write(x);
+                    }
+                };
+
+                new SchemaExport(configuration).Execute(updateExport, true, false);
             }
         }
 
-        protected NhRepositoryBase(ISession session)
+        public NhRepositoryBase(ISession session)
         {
             Session = session;
         }

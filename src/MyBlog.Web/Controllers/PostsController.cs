@@ -41,7 +41,10 @@ namespace MyBlog.Web.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            return View(new CreatePostModel());
+            return View(new CreatePostModel()
+                            {
+                                BlogId = 1
+                            });
         }
 
         [HttpPost]
@@ -52,7 +55,7 @@ namespace MyBlog.Web.Controllers
                 return View(model);
             }
 
-            postRepository.Add(model.GetDomainObject());
+            postRepository.Add(model.GetDomainObject(model.Posted));
 
             return RedirectToAction("List");
         }

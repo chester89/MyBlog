@@ -23,13 +23,13 @@ namespace MyBlog.Web.Models
         public string Tags { get; set; }
         public string TimeZoneId { get; set; }
         public string Slug { get; set; }
-        public DateTime Started { get; set; }
-        public DateTime Finished { get; set; }
+        public DateTime Posted { get; set; }
+        public int BlogId { get; set; }
 
-        public override BlogPost GetDomainObject()
+        public BlogPost GetDomainObject(DateTime posted)
         {
             var result = base.GetDomainObject();
-            result.SetCreated(DateTime.UtcNow, TimeZoneId);
+            result.SetCreated(posted.ToUniversalTime(), TimeZoneId);
             return result;
         }
     }

@@ -4,7 +4,7 @@ namespace MyBlog.Core.Entities
 {
     public class Blog
     {
-        public virtual int Id { get; private set; }
+        public virtual int Id { get; protected set; }
         public virtual ICollection<BlogPost> Posts { get; set; }
         public virtual User Author { get; set; }
 
