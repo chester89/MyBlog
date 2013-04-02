@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel.Syndication;
 using System.Web;
 using System.Web.Mvc;
 using MyBlog.Core;
@@ -14,11 +15,13 @@ namespace MyBlog.Web.Controllers
     public class PostsController: Controller
     {
         private readonly IRepository<BlogPost> postRepository;
+        private readonly IRepository<Blog> blogRepository;
         private readonly IShortenAlgorithm shortenAlgorithm;
 
-        public PostsController(IRepository<BlogPost> postRepository, IShortenAlgorithm shortenAlgorithm)
+        public PostsController(IRepository<BlogPost> postRepository, IRepository<Blog> blogRepository, IShortenAlgorithm shortenAlgorithm)
         {
             this.postRepository = postRepository;
+            this.blogRepository = blogRepository;
             this.shortenAlgorithm = shortenAlgorithm;
         }
 
@@ -58,6 +61,19 @@ namespace MyBlog.Web.Controllers
             postRepository.Add(model.GetDomainObject(model.Posted));
 
             return RedirectToAction("List");
+        }
+
+        public ActionResult RssPosts()
+        {
+            var blog = blogRepository.GetAll().SingleOrDefault();
+            var posts = postRepository.Get(p => p.Blog == blog).Take(20).OrderBy(x => x.Created.ToDateTimeUtc()).ToList();
+            var postItems = posts.Select(p => new SyndicationItem(p.Title, p.Text, new Uri("http://")));
+
+            var feed = new SyndicationFeed(blog.Name, "No description", new Uri("http://www.gleb.ru") , postItems) {
+                Language = "en-US"
+            };
+
+            return new FeedResult(new Rss20FeedFormatter(feed));
         }
     }
 }

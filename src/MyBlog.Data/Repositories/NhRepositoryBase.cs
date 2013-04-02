@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using MyBlog.Core.Contracts;
 using NHibernate;
@@ -66,6 +67,16 @@ namespace MyBlog.Data.Repositories
         public virtual IQueryable<T> GetAll()
         {
             return Session.Query<T>().AsQueryable();
+        }
+
+        public IQueryable<T> Get(Expression<Func<T, bool>> filter)
+        {
+            return GetAll().Where(filter);
+        }
+
+        public IQueryable<T> Take(int count)
+        {
+            return GetAll().Take(count);
         }
 
         public virtual void Transaction(Action action)

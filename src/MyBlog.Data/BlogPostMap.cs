@@ -12,6 +12,7 @@ namespace MyBlog.Data
         public BlogMap()
         {
             Id(x => x.Id);
+            Map(x => x.Name);
             References(x => x.Author).Not.Nullable();
             HasMany(x => x.Posts);
         }
