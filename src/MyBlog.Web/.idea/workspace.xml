@@ -30,7 +30,7 @@
       <file leaf-file-name="createPostVm.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Scripts/ViewModels/createPostVm.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="46" column="22" selection-start="1871" selection-end="1871" vertical-scroll-proportion="0.0">
+            <state line="13" column="36" selection-start="525" selection-end="525" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -48,7 +48,7 @@
       <file leaf-file-name="Create.cshtml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Views/Posts/Create.cshtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="0" selection-start="1411" selection-end="1693" vertical-scroll-proportion="0.4733862">
+            <state line="32" column="90" selection-start="1252" selection-end="1252" vertical-scroll-proportion="0.3657984">
               <folding>
                 <marker date="1364850869047" expanded="true" signature="2188:2204" placeholder="..." />
               </folding>
@@ -415,14 +415,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/ViewModels/createPostVm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="22" selection-start="1871" selection-end="1871" vertical-scroll-proportion="0.0">
+        <state line="13" column="36" selection-start="525" selection-end="525" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Views/Posts/Create.cshtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="0" selection-start="1411" selection-end="1693" vertical-scroll-proportion="0.4733862">
+        <state line="32" column="90" selection-start="1252" selection-end="1252" vertical-scroll-proportion="0.3657984">
           <folding>
             <marker date="1364850869047" expanded="true" signature="2188:2204" placeholder="..." />
           </folding>

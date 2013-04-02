@@ -17,23 +17,23 @@ namespace MyBlog.Data.Repositories
 
         static NhRepositoryBase()
         {
-            autoCreateDb = true;
+            autoCreateDb = false;
 
             if (autoCreateDb)
             {
                 var configuration = NhConfigurationHelper.GetConfiguration();
 
-                //new SchemaExport(configuration).Create(true, true);
-                Action<string> updateExport = x =>
-                {
-                    using (var file = new FileStream(@"D:\coding\funny.txt", FileMode.Create, FileAccess.Write))
-                    using (var sw = new StreamWriter(file))
-                    {
-                        sw.Write(x);
-                    }
-                };
+                new SchemaExport(configuration).Create(true, true);
+                //Action<string> updateExport = x =>
+                //{
+                //    using (var file = new FileStream(@"D:\coding\funny.txt", FileMode.Create, FileAccess.Write))
+                //    using (var sw = new StreamWriter(file))
+                //    {
+                //        sw.Write(x);
+                //    }
+                //};
 
-                new SchemaExport(configuration).Execute(updateExport, true, false);
+                //new SchemaExport(configuration).Execute(updateExport, true, false);
             }
         }
 
