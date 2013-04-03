@@ -20,6 +20,7 @@ namespace MyBlog.Core.Entities
         {
             get { return new ZonedDateTime(new Instant(timeZone.InstantTicks), DateTimeZone.ForId(timeZone.ZoneId)); } 
         }
+
         public virtual string Title { get; set; }
         public virtual string Text { get; set; }
         public virtual string Tags { get; set; }
@@ -43,7 +44,7 @@ namespace MyBlog.Core.Entities
             }
             this.timeZone = new Zone
             {
-                InstantTicks = Instant.FromDateTimeUtc(dateTime.ToUniversalTime()).Ticks,
+                InstantTicks = Instant.FromDateTimeUtc(dateTime).Ticks,
                 ZoneId = timeZone
             };
         }

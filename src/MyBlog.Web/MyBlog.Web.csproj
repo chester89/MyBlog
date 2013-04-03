@@ -184,6 +184,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Posts\Create.cshtml" />
     <Content Include="Views\Home\Default.cshtml" />
+    <Content Include="Views\Posts\Default.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

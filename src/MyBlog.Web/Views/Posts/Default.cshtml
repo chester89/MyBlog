@@ -1,0 +1,16 @@
+﻿@using MyBlog.Core
+@model MyBlog.Web.Models.PostModel
+
+@{
+    ViewBag.Title = string.Format(Messages.Posts_View_Title, Model.Title, Model.BlogName);
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <p>
+        <small>@string.Format(Messages.Posts_View_CreatedTemplate, Model.Created.ToString("F"))</small>
+    </p>
+    <p class="lead">@Model.Title</p>
+
+    <p>@Html.Raw(Model.Text)</p>
+</div>

@@ -8,6 +8,7 @@
     <file path="/Create.cshtml" changelist="88e182cd-0dd1-448c-ae90-d4ea8ff11b31" time="1364849597970" ignored="false" />
     <file path="/_Layout.cshtml" changelist="88e182cd-0dd1-448c-ae90-d4ea8ff11b31" time="1364501563682" ignored="false" />
     <file path="/Site.css" changelist="88e182cd-0dd1-448c-ae90-d4ea8ff11b31" time="1364849883888" ignored="false" />
+    <file path="/Default.cshtml" changelist="88e182cd-0dd1-448c-ae90-d4ea8ff11b31" time="1365010219988" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,13 +46,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Create.cshtml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Create.cshtml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Views/Posts/Create.cshtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="90" selection-start="1252" selection-end="1252" vertical-scroll-proportion="0.3657984">
+            <state line="32" column="90" selection-start="1252" selection-end="1252" vertical-scroll-proportion="-11.535714">
               <folding>
                 <marker date="1364850869047" expanded="true" signature="2188:2204" placeholder="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Default.cshtml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Views/Posts/Default.cshtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="55" selection-start="362" selection-end="362" vertical-scroll-proportion="0.2797282">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -71,6 +81,7 @@
         <option value="$PROJECT_DIR$/Content/Site.css" />
         <option value="$PROJECT_DIR$/Scripts/ViewModels/createPostVm.js" />
         <option value="$PROJECT_DIR$/Views/Posts/Create.cshtml" />
+        <option value="$PROJECT_DIR$/Views/Posts/Default.cshtml" />
       </list>
     </option>
   </component>
@@ -203,20 +214,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="ViewModels" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MyBlog.Web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MyBlog.Web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Content" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -422,10 +419,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Views/Posts/Create.cshtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="90" selection-start="1252" selection-end="1252" vertical-scroll-proportion="0.3657984">
+        <state line="32" column="90" selection-start="1252" selection-end="1252" vertical-scroll-proportion="-11.535714">
           <folding>
             <marker date="1364850869047" expanded="true" signature="2188:2204" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Views/Posts/Default.cshtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="55" selection-start="362" selection-end="362" vertical-scroll-proportion="0.2797282">
+          <folding />
         </state>
       </provider>
     </entry>

@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel.Syndication;
-using System.Web;
 using System.Web.Mvc;
-using MyBlog.Core;
 using MyBlog.Core.Contracts;
 using MyBlog.Core.Entities;
 using MyBlog.Web.Attributes;
 using MyBlog.Web.Models;
+using NodaTime;
 
 namespace MyBlog.Web.Controllers
 {
@@ -44,10 +43,7 @@ namespace MyBlog.Web.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            return View(new CreatePostModel()
-                            {
-                                BlogId = 1
-                            });
+            return View(new CreatePostModel() { BlogId = 1 });
         }
 
         [HttpPost]

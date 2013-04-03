@@ -11,6 +11,8 @@ namespace MyBlog.Web.Models
         public string Text { get; set; }
         public string Tags { get; set; }
         public DateTime Created { get; set; }
+        public string BlogName { get; set; }
+        public string BlogAuthorDisplayName { get; set; }
 
         public static PostModel FromSource(BlogPost post)
         {

@@ -158,5 +158,23 @@ namespace MyBlog.Core {
                 return ResourceManager.GetString("Posts_Create_UrlPreview", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This post was submitted at {0} UTC..
+        /// </summary>
+        public static string Posts_View_CreatedTemplate {
+            get {
+                return ResourceManager.GetString("Posts_View_CreatedTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} - {1}.
+        /// </summary>
+        public static string Posts_View_Title {
+            get {
+                return ResourceManager.GetString("Posts_View_Title", resourceCulture);
+            }
+        }
     }
 }

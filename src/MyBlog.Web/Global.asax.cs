@@ -56,7 +56,8 @@ namespace MyBlog.Web
 
         void ConfigureAutoMapper()
         {
-            Mapper.CreateMap<BlogPost, PostModel>();
+            Mapper.CreateMap<BlogPost, PostModel>()
+                .ForMember(x => x.Created, mo => mo.MapFrom(t => t.Created.ToDateTimeUtc()));
         }
 
         protected void Application_EndRequest()
