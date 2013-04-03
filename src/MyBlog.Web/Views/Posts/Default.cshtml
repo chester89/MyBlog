@@ -8,9 +8,8 @@
 
 <div>
     <p>
-        <small>@string.Format(Messages.Posts_View_CreatedTemplate, Model.Created.ToString("F"))</small>
+        <small>@string.Format(Messages.Posts_View_CreatedTemplate, Model.BlogAuthorDisplayName, Model.Created.ToString("F"))</small>
     </p>
     <p class="lead">@Model.Title</p>
-
     <p>@Html.Raw(Model.Text)</p>
 </div>

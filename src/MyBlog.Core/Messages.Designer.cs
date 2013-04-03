@@ -160,7 +160,7 @@ namespace MyBlog.Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This post was submitted at {0} UTC..
+        ///   Looks up a localized string similar to This post was submitted by {0} at {1} UTC..
         /// </summary>
         public static string Posts_View_CreatedTemplate {
             get {

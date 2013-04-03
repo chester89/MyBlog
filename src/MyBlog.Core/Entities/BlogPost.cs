@@ -21,6 +21,12 @@ namespace MyBlog.Core.Entities
             get { return new ZonedDateTime(new Instant(timeZone.InstantTicks), DateTimeZone.ForId(timeZone.ZoneId)); } 
         }
 
+        public DateTime CreatedInZone(string timeZoneId)
+        {
+            var targetZone = DateTimeZone.ForId(timeZoneId);
+            return Created.WithZone(targetZone).ToDateTimeUnspecified();
+        }
+
         public virtual string Title { get; set; }
         public virtual string Text { get; set; }
         public virtual string Tags { get; set; }
