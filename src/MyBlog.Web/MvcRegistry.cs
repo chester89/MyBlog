@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web.Mvc;
+using MyBlog.Core.Contracts;
 using MyBlog.Infrastructure;
 using MyBlog.Web.Attributes;
 using StructureMap.Configuration.DSL;
@@ -18,7 +19,7 @@ namespace MyBlog.Web
             SetAllProperties(c =>
             {
                 c.OfType<IActionInvoker>();
-                //c.OfType<ITempDataProvider>();
+                c.WithAnyTypeFromNamespaceContainingType<ISlugService>();
                 c.WithAnyTypeFromNamespaceContainingType<SlugToIdAttribute>();
             });
         }
