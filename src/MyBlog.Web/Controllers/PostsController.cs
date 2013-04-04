@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel.Syndication;
 using System.Web.Mvc;
+using MyBlog.Core;
 using MyBlog.Core.Contracts;
 using MyBlog.Core.Entities;
 using MyBlog.Web.Attributes;
 using MyBlog.Web.Models;
-using NodaTime;
 
 namespace MyBlog.Web.Controllers
 {
@@ -61,11 +61,12 @@ namespace MyBlog.Web.Controllers
 
         public ActionResult RssPosts()
         {
+            var urlBase = Url.GetUrlBase();
             var blog = blogRepository.GetAll().SingleOrDefault();
-            var posts = postRepository.Get(p => p.Blog == blog).Take(20).OrderBy(x => x.Created.ToDateTimeUtc()).ToList();
-            var postItems = posts.Select(p => new SyndicationItem(p.Title, p.Text, new Uri("http://")));
+            var posts = postRepository.Get(p => p.Blog == blog).Take(20).AsEnumerable().OrderByDescending(x => x.Created.ToDateTimeUtc()).ToList();
+            var postItems = posts.Select(p => new SyndicationItem(p.Title, p.Text, new Uri(string.Format("{0}{1}{2}", urlBase, Messages.Posts_View_SlugPrefix, p.Slug))));
 
-            var feed = new SyndicationFeed(blog.Name, "No description", new Uri("http://www.gleb.ru") , postItems) {
+            var feed = new SyndicationFeed(blog.Name, "No description", new Uri(urlBase) , postItems) {
                 Language = "en-US"
             };
 

@@ -6,6 +6,7 @@ namespace MyBlog.Core.Entities
     public interface IStarted
     {
         ZonedDateTime Created { get; }
+        void SetCreated(DateTime utcDate, string timeZoneId);
     }
 
     public class BlogPost: IStarted
@@ -21,7 +22,7 @@ namespace MyBlog.Core.Entities
             get { return new ZonedDateTime(new Instant(timeZone.InstantTicks), DateTimeZone.ForId(timeZone.ZoneId)); } 
         }
 
-        public DateTime CreatedInZone(string timeZoneId)
+        public virtual DateTime CreatedInZone(string timeZoneId)
         {
             var targetZone = DateTimeZone.ForId(timeZoneId);
             return Created.WithZone(targetZone).ToDateTimeUnspecified();
@@ -38,20 +39,12 @@ namespace MyBlog.Core.Entities
             timeZone = new Zone();
         }
 
-        public virtual void SetCreated(DateTime dateTime, string timeZone)
+        public virtual void SetCreated(DateTime dateTime, string timeZoneId)
         {
-            if (dateTime.Kind != DateTimeKind.Utc)
-            {
-                throw new ArgumentException("datetime provided should be in UTC", "dateTime");
-            }
-            if (string.IsNullOrEmpty(timeZone))
-            {
-                throw new ArgumentException("timezone should be set", "timeZone");
-            }
-            this.timeZone = new Zone
+            timeZone = new Zone
             {
                 InstantTicks = Instant.FromDateTimeUtc(dateTime).Ticks,
-                ZoneId = timeZone
+                ZoneId = timeZoneId
             };
         }
     }

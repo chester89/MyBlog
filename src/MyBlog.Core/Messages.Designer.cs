@@ -160,11 +160,56 @@ namespace MyBlog.Core {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Posted {0} UTC..
+        /// </summary>
+        public static string Posts_List_CreatedTemplate {
+            get {
+                return ResourceManager.GetString("Posts_List_CreatedTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To read further, please follow {0}..
+        /// </summary>
+        public static string Posts_List_ReadAllMessage {
+            get {
+                return ResourceManager.GetString("Posts_List_ReadAllMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All my posts.
+        /// </summary>
+        public static string Posts_List_Title {
+            get {
+                return ResourceManager.GetString("Posts_List_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to F.
+        /// </summary>
+        public static string Posts_StandardDateTimeFormat {
+            get {
+                return ResourceManager.GetString("Posts_StandardDateTimeFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This post was submitted by {0} at {1} UTC..
         /// </summary>
         public static string Posts_View_CreatedTemplate {
             get {
                 return ResourceManager.GetString("Posts_View_CreatedTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to /blog/.
+        /// </summary>
+        public static string Posts_View_SlugPrefix {
+            get {
+                return ResourceManager.GetString("Posts_View_SlugPrefix", resourceCulture);
             }
         }
         

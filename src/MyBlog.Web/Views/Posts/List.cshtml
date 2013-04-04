@@ -1,0 +1,15 @@
+﻿@using MyBlog.Core
+@model MyBlog.Web.Models.PostListModel
+
+@{
+    ViewBag.Title = Messages.Posts_List_Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@foreach(var post in Model.Posts)
+{
+    <p>@string.Format(Messages.Posts_List_CreatedTemplate, post.Created.ToString(Messages.Posts_StandardDateTimeFormat))</p>
+    <p class="lead">@post.Title</p>
+    <p>@Html.Raw(post.Text)</p>
+    <p>@string.Format(Messages.Posts_List_ReadAllMessage, Html.RouteLink("this link", "PostSlug", new { slug = post.Slug }))</p>
+}

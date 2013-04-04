@@ -21,7 +21,7 @@ namespace MyBlog.Data
             return Fluently.Configure()
                 .Database(MsSqlConfiguration.MsSql2008.ShowSql().ConnectionString(builder => builder.FromConnectionStringWithKey("db")))
                 .Mappings(m => m.FluentMappings.AddFromAssemblyOf<BlogPostMap>()
-                .Conventions.AddFromAssemblyOf<CustomIdConvention>().ExportTo(@"D:\coding\mappings"));
+                .Conventions.AddFromAssemblyOf<CustomIdConvention>());
         }
 
         public static ISessionFactory CreateSessionFactory()

@@ -15,4 +15,14 @@ namespace MyBlog.Web
             return MvcHtmlString.Create(result);
         }
     }
+
+    public static class HtmlExtensions
+    {
+        public static string GetUrlBase(this UrlHelper url)
+        {
+            Uri requestUrl = url.RequestContext.HttpContext.Request.Url;
+
+            return string.Format("{0}://{1}", requestUrl.Scheme, requestUrl.Authority);
+        }
+    }
 }

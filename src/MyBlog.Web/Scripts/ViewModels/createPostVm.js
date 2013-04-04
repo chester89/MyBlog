@@ -1,4 +1,4 @@
-﻿var createPostViewModel = function (coordinatesUrl, timeZoneUrl, slugUrl, inProgressMessage, timeZoneTemplate) {
+﻿var createPostViewModel = function (coordinatesUrl, timeZoneUrl, slugUrl, inProgressMessage, timeZoneTemplate, postSlugPrefix) {
     var self = this;
     self.timeZoneAndLocation = ko.observable(inProgressMessage);
     self.timeZoneLoaded = ko.observable(false);
@@ -18,7 +18,7 @@
         });
     };
     self.urlPreview = ko.computed(function() {
-       return '/blog/' + self.slug();
+       return postSlugPrefix + self.slug();
     });
 
     self.getCoordinates = function () {

@@ -150,8 +150,23 @@
   <data name="Posts_Create_UrlPreview" xml:space="preserve">
     <value>Your post will be available here:</value>
   </data>
+  <data name="Posts_List_CreatedTemplate" xml:space="preserve">
+    <value>Posted {0} UTC.</value>
+  </data>
+  <data name="Posts_List_ReadAllMessage" xml:space="preserve">
+    <value>To read further, please follow {0}.</value>
+  </data>
+  <data name="Posts_List_Title" xml:space="preserve">
+    <value>All my posts</value>
+  </data>
+  <data name="Posts_StandardDateTimeFormat" xml:space="preserve">
+    <value>F</value>
+  </data>
   <data name="Posts_View_CreatedTemplate" xml:space="preserve">
     <value>This post was submitted by {0} at {1} UTC.</value>
+  </data>
+  <data name="Posts_View_SlugPrefix" xml:space="preserve">
+    <value>/blog/</value>
   </data>
   <data name="Posts_View_Title" xml:space="preserve">
     <value>{0} - {1}</value>
