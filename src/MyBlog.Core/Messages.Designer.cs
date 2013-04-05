@@ -61,6 +61,15 @@ namespace MyBlog.Core {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About me.
+        /// </summary>
+        public static string Home_About_Title {
+            get {
+                return ResourceManager.GetString("Home_About_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create a new post.
         /// </summary>
         public static string Home_CreatePostLink {
