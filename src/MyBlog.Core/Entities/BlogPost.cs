@@ -19,7 +19,11 @@ namespace MyBlog.Core.Entities
         /// </summary>
         public virtual ZonedDateTime Created
         {
-            get { return new ZonedDateTime(new Instant(timeZone.InstantTicks), DateTimeZone.ForId(timeZone.ZoneId)); } 
+            get
+            {
+                return new ZonedDateTime(new Instant(timeZone.InstantTicks), DateTimeZone.ForId(timeZone.ZoneId));
+                //DateTimeZoneProviders.Tzdb.GetZoneOrNull(zoneId);
+            } 
         }
 
         public virtual DateTime CreatedInZone(string timeZoneId)
