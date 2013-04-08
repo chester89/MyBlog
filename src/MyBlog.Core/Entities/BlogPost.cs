@@ -21,14 +21,13 @@ namespace MyBlog.Core.Entities
         {
             get
             {
-                return new ZonedDateTime(new Instant(timeZone.InstantTicks), DateTimeZone.ForId(timeZone.ZoneId));
-                //DateTimeZoneProviders.Tzdb.GetZoneOrNull(zoneId);
+                return new ZonedDateTime(new Instant(timeZone.InstantTicks), DateTimeZoneProviders.Tzdb[timeZone.ZoneId]);
             } 
         }
 
         public virtual DateTime CreatedInZone(string timeZoneId)
         {
-            var targetZone = DateTimeZone.ForId(timeZoneId);
+            var targetZone = DateTimeZoneProviders.Tzdb[timeZoneId];
             return Created.WithZone(targetZone).ToDateTimeUnspecified();
         }
 
