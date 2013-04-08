@@ -26,3 +26,4 @@ build
 *.swp
 src/packages/
 build/
+*.ncrunchsolution
