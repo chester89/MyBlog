@@ -47,6 +47,7 @@ namespace MyBlog.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Create(CreatePostModel model)
         {
             if (!ModelState.IsValid)

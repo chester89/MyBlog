@@ -178,11 +178,11 @@ namespace MyBlog.Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to To read further, please follow {0}..
+        ///   Looks up a localized string similar to To read further, please follow.
         /// </summary>
-        public static string Posts_List_ReadAllMessage {
+        public static string Posts_List_ReadAllMessagePrefix {
             get {
-                return ResourceManager.GetString("Posts_List_ReadAllMessage", resourceCulture);
+                return ResourceManager.GetString("Posts_List_ReadAllMessagePrefix", resourceCulture);
             }
         }
         

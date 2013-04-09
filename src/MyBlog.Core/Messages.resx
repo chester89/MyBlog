@@ -156,8 +156,8 @@
   <data name="Posts_List_CreatedTemplate" xml:space="preserve">
     <value>Posted {0} UTC.</value>
   </data>
-  <data name="Posts_List_ReadAllMessage" xml:space="preserve">
-    <value>To read further, please follow {0}.</value>
+  <data name="Posts_List_ReadAllMessagePrefix" xml:space="preserve">
+    <value>To read further, please follow</value>
   </data>
   <data name="Posts_List_Title" xml:space="preserve">
     <value>All my posts</value>

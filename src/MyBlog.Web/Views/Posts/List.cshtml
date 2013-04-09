@@ -8,8 +8,7 @@
 
 @foreach(var post in Model.Posts)
 {
-    <p>@string.Format(Messages.Posts_List_CreatedTemplate, post.Created.ToString(Messages.Posts_StandardDateTimeFormat))</p>
-    <p class="lead">@post.Title</p>
+    <p class="lead">@post.Title</p> <small>@string.Format(Messages.Posts_List_CreatedTemplate, post.Created.ToString(Messages.Posts_StandardDateTimeFormat))</small>
     <p>@Html.Raw(post.Text)</p>
-    <p>@string.Format(Messages.Posts_List_ReadAllMessage, Html.RouteLink("this link", "PostSlug", new { slug = post.Slug }))</p>
+    <p>@Messages.Posts_List_ReadAllMessagePrefix @Html.RouteLink("this link", "PostSlug", new { slug = post.Slug }) .</p>
 }

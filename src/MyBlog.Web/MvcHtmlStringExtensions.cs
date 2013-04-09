@@ -6,16 +6,6 @@ using System.Web.Mvc;
 
 namespace MyBlog.Web
 {
-    public static class MvcHtmlStringExtensions
-    {
-        public static MvcHtmlString DataBind(this MvcHtmlString source, string binding)
-        {
-            var result = source.ToHtmlString();
-            result = result.Replace("value=\"\"", string.Format("data-bind=\"{0}\"", binding));
-            return MvcHtmlString.Create(result);
-        }
-    }
-
     public static class HtmlExtensions
     {
         public static string GetUrlBase(this UrlHelper url)

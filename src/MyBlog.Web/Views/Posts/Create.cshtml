@@ -8,6 +8,7 @@
 }
 
 <script src="@Url.Content("~/Scripts/ViewModels/createPostVm.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/ckeditor/ckeditor.js")" type="text/javascript"></script>
 
 <script type="text/javascript">
     $(document).ready(function () {
@@ -15,6 +16,7 @@
             '@Messages.Posts_Create_TimeZoneIsLoading', '@Messages.Posts_Create_TimeZoneTemplate', '@Messages.Posts_View_SlugPrefix');
         viewModel.getCoordinates();
         ko.applyBindings(viewModel);
+        CKEDITOR.replace('ckEditor');
     });
 </script>
 
@@ -32,7 +34,7 @@
     <div class="control-group">
         <label class="control-label" for="Title">@Messages.Posts_Create_TitleLabel</label>
         <div class="controls">
-            @Html.TextBoxFor(x => x.Title, new { @class = "input-xxlarge" }).DataBind("value: title")
+            @Html.TextBoxFor(x => x.Title, new {  @class = "input-xxlarge", data_bind = "value: title" })
         </div>
     </div>
     <div class="control-group" data-bind="if: slugLoaded">
@@ -44,7 +46,7 @@
     <div class="control-group">
         <label class="control-label" for="Text">@Messages.Posts_Create_TextLabel</label>
         <div class="controls">
-            @Html.TextAreaFor(x => x.Text, 10, 20, new { @class = "input-xxlarge" })
+            @Html.TextAreaFor(x => x.Text, 10, 20, new { id = "ckEditor", @class = "input-xxlarge" })
         </div>
     </div>
 

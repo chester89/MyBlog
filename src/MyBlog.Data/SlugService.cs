@@ -30,7 +30,7 @@ namespace MyBlog.Data
 
         public string GenerateSlug(string title)
         {
-            var firstAttempt = title.Replace(" ", "-");
+            var firstAttempt = title.Replace(" ", "-").Trim();
 
             if (session.Query<BlogPost>().Any(bp => bp.Slug == firstAttempt))
             {
