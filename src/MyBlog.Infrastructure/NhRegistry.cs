@@ -22,11 +22,9 @@ namespace MyBlog.Infrastructure
             {
                 sc.AssemblyContainingType<BlogPost>();
                 sc.AssemblyContainingType<SlugService>();
-                //sc.RegisterConcreteTypesAgainstTheFirstInterface(); *
+                sc.RegisterConcreteTypesAgainstTheFirstInterface();
                 sc.WithDefaultConventions();
                 sc.TheCallingAssembly();
-                //sc.AddAllTypesOf(typeof (IRepository<>)); *
-                //sc.ConnectImplementationsToTypesClosing(typeof(IRepository<>)); *
             });
         }
     }

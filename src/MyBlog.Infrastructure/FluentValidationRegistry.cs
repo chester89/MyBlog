@@ -14,7 +14,7 @@ namespace MyBlog.Infrastructure
             Scan(sc =>
             {
                 sc.TheCallingAssembly();
-                sc.ConnectImplementationsToTypesClosing(typeof(IValidator<>));
+                sc.ConnectImplementationsToTypesClosing(typeof(AbstractValidator<>));
             });
         }
     }

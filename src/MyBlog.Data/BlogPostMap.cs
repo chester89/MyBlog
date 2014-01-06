@@ -37,7 +37,7 @@ namespace MyBlog.Data
             Map(x => x.Title).Not.Nullable();
             Map(x => x.Slug).Not.Nullable();
             Map(x => x.Text);
-            HasOne(x => x.Blog);
+            References(x => x.Blog);
             Component(Reveal.Member<BlogPost, Zone>("timeZone"));
         }
     }

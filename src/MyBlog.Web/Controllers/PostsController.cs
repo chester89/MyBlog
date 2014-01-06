@@ -13,13 +13,15 @@ namespace MyBlog.Web.Controllers
 {
     public class PostsController: Controller
     {
-        private readonly IRepository<BlogPost> postRepository;
+        private readonly IPostRepository postRepository;
+        private readonly IRepository<BlogPost> postReader;
         private readonly IRepository<Blog> blogRepository;
         private readonly IShortenAlgorithm shortenAlgorithm;
 
-        public PostsController(IRepository<BlogPost> postRepository, IRepository<Blog> blogRepository, IShortenAlgorithm shortenAlgorithm)
+        public PostsController(IPostRepository postRepository, IRepository<BlogPost> postReader, IRepository<Blog> blogRepository, IShortenAlgorithm shortenAlgorithm)
         {
             this.postRepository = postRepository;
+            this.postReader = postReader;
             this.blogRepository = blogRepository;
             this.shortenAlgorithm = shortenAlgorithm;
         }
@@ -28,19 +30,21 @@ namespace MyBlog.Web.Controllers
         [SlugToId]
         public ActionResult Default(int id)
         {
-            var post = postRepository.Get(id);
+            var post = postReader.Get(id);
             return View(PostModel.FromSource(post));
         }
 
         [HttpGet]
+        //filter by blogId here
         public ActionResult List()
         {
-            var posts = postRepository.GetAll().Take(20).AsEnumerable().OrderByDescending(p => p.Created.ToDateTimeUtc()).ToList();
+            var posts = postReader.GetAll().Take(20).AsEnumerable().OrderByDescending(p => p.Created.ToDateTimeUtc()).ToList();
             posts.ForEach(p => p.Text = shortenAlgorithm.Shorten(p.Text));
             return View(new PostListModel(posts));
         }
 
         [HttpGet]
+        //authentication here
         public ActionResult Create()
         {
             return View(new CreatePostModel() { BlogId = 1 });
@@ -48,6 +52,7 @@ namespace MyBlog.Web.Controllers
 
         [HttpPost]
         [ValidateInput(false)]
+        //authentication here
         public ActionResult Create(CreatePostModel model)
         {
             if (!ModelState.IsValid)
@@ -55,7 +60,7 @@ namespace MyBlog.Web.Controllers
                 return View(model);
             }
 
-            postRepository.Add(model.GetDomainObject(model.Posted));
+            postRepository.AddNew(model.GetDomainObject(), model.BlogId);
 
             return RedirectToAction("List");
         }
@@ -64,10 +69,11 @@ namespace MyBlog.Web.Controllers
         {
             var urlBase = Url.GetUrlBase();
             var blog = blogRepository.GetAll().SingleOrDefault();
-            var posts = postRepository.Get(p => p.Blog == blog).Take(20).AsEnumerable().OrderByDescending(x => x.Created.ToDateTimeUtc()).ToList();
+            var posts = postReader.Get(p => p.Blog == blog).Take(20).AsEnumerable().OrderByDescending(x => x.Created.ToDateTimeUtc()).ToList();
             var postItems = posts.Select(p => new SyndicationItem(p.Title, p.Text, new Uri(string.Format("{0}{1}{2}", urlBase, Messages.Posts_View_SlugPrefix, p.Slug))));
 
-            var feed = new SyndicationFeed(blog.Name, "No description", new Uri(urlBase) , postItems) {
+            var feed = new SyndicationFeed(blog.Name, "No description", new Uri(urlBase) , postItems) 
+            {
                 Language = "en-US"
             };
 

@@ -26,10 +26,10 @@ namespace MyBlog.Web.Models
         public DateTime Posted { get; set; }
         public int BlogId { get; set; }
 
-        public BlogPost GetDomainObject(DateTime posted)
+        public BlogPost GetDomainObject()
         {
             var result = base.GetDomainObject();
-            result.SetCreated(posted.ToUniversalTime(), TimeZoneId);
+            result.SetCreated(Posted.ToUniversalTime(), TimeZoneId);
             return result;
         }
     }

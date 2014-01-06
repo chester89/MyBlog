@@ -6,6 +6,7 @@ using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using NHibernate;
 using NHibernate.Cfg;
+using NHibernate.Tool.hbm2ddl;
 
 namespace MyBlog.Data
 {
@@ -13,7 +14,10 @@ namespace MyBlog.Data
     {
         public static Configuration GetConfiguration()
         {
-            return GetFluentConfiguration().BuildConfiguration();
+            var buildConfiguration = GetFluentConfiguration().BuildConfiguration();
+            var schema = string.Empty;
+            new SchemaExport(buildConfiguration).Execute(scr => { schema = scr; }, true, true);
+            return buildConfiguration;
         }
 
         private static FluentConfiguration GetFluentConfiguration()
@@ -26,7 +30,8 @@ namespace MyBlog.Data
 
         public static ISessionFactory CreateSessionFactory()
         {
-            return GetFluentConfiguration().BuildSessionFactory();
+            var fluentConfiguration = GetFluentConfiguration();
+            return fluentConfiguration.BuildSessionFactory();
         }
     }
 }

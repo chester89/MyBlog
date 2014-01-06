@@ -27,6 +27,7 @@
         <input type="hidden" name="Posted" data-bind="value: localDateTime" />
     </div>
     <input type="hidden" name="Slug" data-bind="value: slug"/>
+    @Html.HiddenFor(x => x.BlogId)
     <p class="lead">
         @Messages.Posts_Create_Title
     </p>

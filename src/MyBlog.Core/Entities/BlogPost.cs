@@ -42,6 +42,8 @@ namespace MyBlog.Core.Entities
             timeZone = new Zone();
         }
 
+        /// <param name="dateTime">datetime should be provided in UTC</param>
+        /// <param name="timeZoneId"></param>
         public virtual void SetCreated(DateTime dateTime, string timeZoneId)
         {
             timeZone = new Zone
