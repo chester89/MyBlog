@@ -6,9 +6,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@foreach(var post in Model.Posts)
-{
-    <p class="lead">@post.Title</p> <small>@string.Format(Messages.Posts_List_CreatedTemplate, post.Created.ToString(Messages.Posts_StandardDateTimeFormat))</small>
-    <p>@Html.Raw(post.Text)</p>
-    <p>@Messages.Posts_List_ReadAllMessagePrefix @Html.RouteLink("this link", "PostSlug", new { slug = post.Slug }) .</p>
-}
+<div class="container">
+    @foreach(var post in Model.Posts)
+    {
+        <p class="lead">@post.Title</p> <small>@string.Format(Messages.Posts_List_CreatedTemplate, post.Created.ToString(Messages.Posts_StandardDateTimeFormat))</small>
+        <p>@Html.Raw(post.Text)</p>
+        <p>@Messages.Posts_List_ReadAllMessagePrefix @Html.RouteLink(Messages.Posts_List_FollowLink, "PostSlug", new { slug = post.Slug }) .</p>
+    }
+</div>

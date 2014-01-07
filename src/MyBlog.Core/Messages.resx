@@ -156,6 +156,9 @@
   <data name="Posts_List_CreatedTemplate" xml:space="preserve">
     <value>Posted {0} UTC.</value>
   </data>
+  <data name="Posts_List_FollowLink" xml:space="preserve">
+    <value>this link</value>
+  </data>
   <data name="Posts_List_ReadAllMessagePrefix" xml:space="preserve">
     <value>To read further, please follow</value>
   </data>
