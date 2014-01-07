@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Text;
 
-namespace MyBlog.Web.Models
+namespace MyBlog.Core.Models
 {
-    public class PostModel
+    public class PostReadModel
     {
         public int Id { get; set; }
         public string Title { get; set; }
@@ -15,11 +15,5 @@ namespace MyBlog.Web.Models
         public DateTime Created { get; set; }
         public string BlogName { get; set; }
         public string BlogAuthorDisplayName { get; set; }
-    }
-
-    public class TagModel
-    {
-        public String Name { get; set; }
-        public Int32 PostCount { get; set; }
     }
 }

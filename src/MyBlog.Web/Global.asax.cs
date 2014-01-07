@@ -7,6 +7,7 @@ using System.Web.Routing;
 using AutoMapper;
 using FluentValidation.Mvc;
 using MyBlog.Core.Entities;
+using MyBlog.Core.Models;
 using MyBlog.Infrastructure;
 using MyBlog.Web.Models;
 
@@ -55,8 +56,11 @@ namespace MyBlog.Web
 
         void ConfigureAutoMapper()
         {
-            Mapper.CreateMap<BlogPost, PostModel>()
-                .ForMember(x => x.Created, mo => mo.MapFrom(t => t.Created.ToDateTimeUtc()));
+            Mapper.CreateMap<Core.Models.TagModel, Models.TagModel>();
+            Mapper.CreateMap<PostReadModel, PostModel>();
+            Mapper.CreateMap<BlogPost, PostModel>();
+            Mapper.CreateMap<IEnumerable<PostReadModel>, PostListModel>()
+                  .ForMember(x => x.Posts, x => x.MapFrom(t => t));
         }
 
         protected void Application_EndRequest()

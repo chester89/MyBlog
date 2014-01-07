@@ -17,34 +17,27 @@ namespace MyBlog.Web.Controllers
         private readonly IPostRepository postRepository;
         private readonly IRepository<BlogPost> postReader;
         private readonly IRepository<Blog> blogRepository;
-        private readonly IShortenAlgorithm shortenAlgorithm;
-        private readonly ITagCounter tagCounter;
 
-        public PostsController(IPostRepository postRepository, IRepository<BlogPost> postReader, IRepository<Blog> blogRepository, IShortenAlgorithm shortenAlgorithm, ITagCounter tagCounter)
+        public PostsController(IPostRepository postRepository, IRepository<BlogPost> postReader, IRepository<Blog> blogRepository)
         {
             this.postRepository = postRepository;
             this.postReader = postReader;
             this.blogRepository = blogRepository;
-            this.shortenAlgorithm = shortenAlgorithm;
-            this.tagCounter = tagCounter;
         }
 
         [HttpGet]
         [SlugToId]
         public ActionResult Default(int id)
         {
-            var post = postReader.Get(id);
-            var tagCounts = tagCounter.ByPost(id);
-            return View(Mapper.Map<BlogPost, PostModel>(post));
+            return View(Mapper.Map<PostModel>(postRepository.Read(id)));
         }
 
         [HttpGet]
         //filter by blogId here
         public ActionResult List()
         {
-            var posts = postReader.GetAll().Take(20).AsEnumerable().OrderByDescending(p => p.Created.ToDateTimeUtc()).ToList();
-            posts.ForEach(p => p.Text = shortenAlgorithm.Shorten(p.Text));
-            return View(new PostListModel(posts));
+            var posts = postRepository.List();
+            return View(Mapper.Map<PostListModel>(posts.ToList()));
         }
 
         [HttpGet]

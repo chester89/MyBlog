@@ -1,19 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using AutoMapper;
-using MyBlog.Core.Entities;
 
 namespace MyBlog.Web.Models
 {
     public class PostListModel
     {
-        public ICollection<PostModel> Posts { get; private set; }
+        public ICollection<PostModel> Posts { get; set; }
 
-        public PostListModel(IEnumerable<BlogPost> posts)
+        public PostListModel()
         {
-            Posts = Mapper.Map<IEnumerable<BlogPost>, IEnumerable<PostModel>>(posts).ToList();
+            Posts = new List<PostModel>();
         }
     }
 }

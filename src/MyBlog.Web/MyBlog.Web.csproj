@@ -92,7 +92,6 @@
     <Compile Include="Models\CreatePostModel.cs" />
     <Compile Include="Models\PostListModel.cs" />
     <Compile Include="Models\PostModel.cs" />
-    <Compile Include="Models\TagModel.cs" />
     <Compile Include="MvcHtmlStringExtensions.cs" />
     <Compile Include="MvcRegistry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

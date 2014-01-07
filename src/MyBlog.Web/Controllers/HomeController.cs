@@ -10,7 +10,7 @@ namespace MyBlog.Web.Controllers
     {
         public ActionResult Default()
         {
-            return View();
+            return RedirectToAction("List", "Posts");
         }
 
         public ActionResult About()
