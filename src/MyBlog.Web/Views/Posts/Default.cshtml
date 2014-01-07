@@ -7,31 +7,24 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="page-header">
-  <h1>@Model.Title</h1>
+<div class="date">
+    <span>@string.Format(Messages.Posts_View_CreatedTemplate, Model.BlogAuthorDisplayName, Model.Created.ToString(Messages.Posts_StandardDateTimeFormat, Thread.CurrentThread.CurrentUICulture))</span>
 </div>
 
-<div class="row">
-    <div class="span8">
-        <div class="date">
-            <span>@string.Format(Messages.Posts_View_CreatedTemplate, Model.BlogAuthorDisplayName, Model.Created.ToString(Messages.Posts_StandardDateTimeFormat, Thread.CurrentThread.CurrentUICulture))</span>
-        </div>
-
-        <div id="post">
-            <p>
-                @Html.Raw(Model.Text)
-            </p>
-        </div>
+<div id="post">
+    <p>
+        @Html.Raw(Model.Text)
+    </p>
+</div>
         
-        <h4>Tags</h4>
-        @if (Model.Tags.Any())
+<h4>Tags</h4>
+@if (Model.Tags.Any())
+{
+    <ul class="tag_box">
+        @foreach (var tag in Model.Tags)
         {
-            <ul class="tag_box">
-                @foreach (var tag in Model.Tags)
-                {
-                    @*<li><a href="@Url.Action("Default", "Tag", new { name = tag.Name })">@tag.Name <span>@tag.PostCount</span></a></li>*@
-                }
-            </ul>
+            //@Url.Action("Default", "Tag", new { name = tag.Name })
+            <li><a href="http://google.com">@tag.Name <span>@tag.PostCount</span></a></li>
         }
-    </div>
-</div>
+    </ul>
+}

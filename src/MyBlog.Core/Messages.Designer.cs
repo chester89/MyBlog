@@ -196,7 +196,7 @@ namespace MyBlog.Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to All my posts.
+        ///   Looks up a localized string similar to What I recently write about.
         /// </summary>
         public static string Posts_List_Title {
             get {

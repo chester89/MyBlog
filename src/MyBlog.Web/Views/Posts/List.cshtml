@@ -6,11 +6,29 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container">
-    @foreach(var post in Model.Posts)
+@foreach(var post in Model.Posts)
+{
+    <h4>
+        @Html.RouteLink(post.Title, "PostSlug", new { slug = post.Slug })
+    </h4>
+    <div class="date">
+        @string.Format(Messages.Posts_List_CreatedTemplate, post.Created.ToString(Messages.Posts_StandardDateTimeFormat))
+    </div>
+	<div>
+		<div id="post">
+			@Html.Raw(post.Text)
+		</div>
+	</div>
+    <text>Tags:</text>
+    if (post.Tags.Any())
     {
-        <p class="lead">@post.Title</p> <small>@string.Format(Messages.Posts_List_CreatedTemplate, post.Created.ToString(Messages.Posts_StandardDateTimeFormat))</small>
-        <p>@Html.Raw(post.Text)</p>
-        <p>@Messages.Posts_List_ReadAllMessagePrefix @Html.RouteLink(Messages.Posts_List_FollowLink, "PostSlug", new { slug = post.Slug }) .</p>
+        <span class="tag_box">
+            @foreach (var tag in post.Tags)
+            {
+                //@Url.Action("Default", "Tag", new { name = tag.Name })
+                <a href="http://google.com">@tag.Name <span>@tag.PostCount</span></a>
+            }
+        </span>
     }
-</div>
+    <hr />
+}

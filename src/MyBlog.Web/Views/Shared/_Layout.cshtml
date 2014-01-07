@@ -28,7 +28,17 @@
         
         <div class="container">
             <div class="content">
-                @RenderBody()
+                <div class="page-header">
+                    <h1>@ViewBag.Title</h1>
+                </div>
+                <div class="row">
+                    <div class="span8">
+                        @RenderBody()
+                    </div>
+                    <div class="span4">
+                        I'm Gleb :)
+                    </div>
+                </div>
             </div>
         </div>
     
