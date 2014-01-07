@@ -1,4 +1,5 @@
-﻿@using MyBlog.Core
+﻿@using System.Threading
+@using MyBlog.Core
 @model MyBlog.Web.Models.PostModel
 
 @{
@@ -6,10 +7,31 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div>
-    <p>
-        <small>@string.Format(Messages.Posts_View_CreatedTemplate, Model.BlogAuthorDisplayName, Model.Created.ToString(Messages.Posts_StandardDateTimeFormat))</small>
-    </p>
-    <p class="lead">@Model.Title</p>
-    <p>@Html.Raw(Model.Text)</p>
+<div class="page-header">
+  <h1>@Model.Title</h1>
+</div>
+
+<div class="row">
+    <div class="span8">
+        <div class="date">
+            <span>@string.Format(Messages.Posts_View_CreatedTemplate, Model.BlogAuthorDisplayName, Model.Created.ToString(Messages.Posts_StandardDateTimeFormat, Thread.CurrentThread.CurrentUICulture))</span>
+        </div>
+
+        <div id="post">
+            <p>
+                @Html.Raw(Model.Text)
+            </p>
+        </div>
+        
+        <h4>Tags</h4>
+        @if (Model.Tags.Any())
+        {
+            <ul class="tag_box">
+                @foreach (var tag in Model.Tags)
+                {
+                    @*<li><a href="@Url.Action("Default", "Tag", new { name = tag.Name })">@tag.Name <span>@tag.PostCount</span></a></li>*@
+                }
+            </ul>
+        }
+    </div>
 </div>

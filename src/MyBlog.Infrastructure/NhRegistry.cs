@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using MyBlog.Core.Contracts;
@@ -18,6 +21,8 @@ namespace MyBlog.Infrastructure
             For<ISessionFactory>().Singleton().Use(NhConfigurationHelper.CreateSessionFactory);
             For<ISession>().HttpContextScoped().Use(context => context.TryGetInstance<ISessionFactory>().OpenSession());
             For(typeof (IRepository<>)).Use(typeof (NhRepositoryBase<>));
+            For<IDbConnection>().HttpContextScoped()
+                .Use(context => new SqlConnection(ConfigurationManager.ConnectionStrings["db"].ConnectionString));
             Scan(sc =>
             {
                 sc.AssemblyContainingType<BlogPost>();
