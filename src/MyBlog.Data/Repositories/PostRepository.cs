@@ -12,8 +12,11 @@ namespace MyBlog.Data.Repositories
 {
     public class PostRepository : NhRepositoryBase<BlogPost>, IPostRepository
     {
-        public PostRepository(ISession session) : base(session)
+        private readonly IShortenAlgorithm shorten;
+
+        public PostRepository(ISession session, IShortenAlgorithm shorten) : base(session)
         {
+            this.shorten = shorten;
         }
 
         public void AddNew(BlogPost newPost, int blogId)
@@ -72,16 +75,16 @@ namespace MyBlog.Data.Repositories
             foreach (var post in allPosts)
             {
                 var tagModel = allPosts.SelectMany(t => t.tags).GroupBy(t => t).ToDictionary(g => g.Key, g => g.Count())
-                .Where(pair => allPosts.Single(t => t.id == post.id).tags.Contains(pair.Key)).Select(x => new TagModel()
-                {
-                    Name = x.Key,
-                    PostCount = x.Value
-                }).ToArray();
+                    .Where(pair => allPosts.Single(t => t.id == post.id).tags.Contains(pair.Key)).Select(x => new TagModel()
+                    {
+                        Name = x.Key,
+                        PostCount = x.Value
+                    }).ToArray();
                 yield return new PostReadModel()
                 {
                     Id = post.id,
                     Title = post.title,
-                    Text = post.text,
+                    Text = shorten.Shorten(post.text),
                     Slug = post.slug,
                     Created = post.created.ToDateTimeUtc(),
                     Tags = tagModel,
