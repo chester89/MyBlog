@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -57,7 +58,8 @@ namespace MyBlog.Web
         void ConfigureAutoMapper()
         {
             Mapper.CreateMap<Core.Models.TagModel, Models.TagModel>();
-            Mapper.CreateMap<PostReadModel, PostModel>();
+            Mapper.CreateMap<PostReadModel, PostModel>()
+                .ForMember(x => x.DisqusShortName, mo => mo.MapFrom(prm => ConfigurationManager.AppSettings["DisqusShortName"]));
             Mapper.CreateMap<BlogPost, PostModel>();
             Mapper.CreateMap<IEnumerable<PostReadModel>, PostListModel>()
                   .ForMember(x => x.Posts, x => x.MapFrom(t => t));

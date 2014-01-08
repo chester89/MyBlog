@@ -15,6 +15,7 @@ namespace MyBlog.Web.Models
         public DateTime Created { get; set; }
         public string BlogName { get; set; }
         public string BlogAuthorDisplayName { get; set; }
+        public string DisqusShortName { get; set; }
     }
 
     public class TagModel
