@@ -37,6 +37,10 @@
                     </div>
                     <div class="span4">
                         I'm Gleb :)
+                        
+                        <div class="twitter-feed">
+                            <a class="twitter-timeline" href="https://twitter.com/chester89" data-theme="light" data-tweet-limit="5" data-widget-id="421260939233476609">Tweets by me</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -57,6 +61,8 @@
                     return str.replace( /\w\S*/g , function(txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); });
                 };
             }
+            
+            !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");
         </script>
     </body>
 </html>

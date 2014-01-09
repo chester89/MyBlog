@@ -174,3 +174,7 @@ html, body {
 .comment-date {
 	color: #999;
 }
+
+.twitter-feed {
+    width: 100%;
+}
