@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel.Syndication;
 using System.Web.Mvc;
@@ -14,13 +13,13 @@ namespace MyBlog.Web.Controllers
 {
     public class PostsController: Controller
     {
-        private readonly IPostRepository postRepository;
+        private readonly IPostService postService;
         private readonly IRepository<BlogPost> postReader;
         private readonly IRepository<Blog> blogRepository;
 
-        public PostsController(IPostRepository postRepository, IRepository<BlogPost> postReader, IRepository<Blog> blogRepository)
+        public PostsController(IPostService postService, IRepository<BlogPost> postReader, IRepository<Blog> blogRepository)
         {
-            this.postRepository = postRepository;
+            this.postService = postService;
             this.postReader = postReader;
             this.blogRepository = blogRepository;
         }
@@ -29,15 +28,15 @@ namespace MyBlog.Web.Controllers
         [SlugToId]
         public ActionResult Default(int id)
         {
-            return View(Mapper.Map<PostModel>(postRepository.Read(id)));
+            return View(Mapper.Map<PostModel>(postService.Read(id)));
         }
 
         [HttpGet]
         //filter by blogId here
         public ActionResult List()
         {
-            var posts = postRepository.List();
-            return View(Mapper.Map<PostListModel>(posts.ToList()));
+            var posts = postService.List();
+            return View(Mapper.Map<PostListModel>(posts));
         }
 
         [HttpGet]
@@ -57,7 +56,7 @@ namespace MyBlog.Web.Controllers
                 return View(model);
             }
 
-            postRepository.AddNew(model.GetDomainObject(), model.BlogId);
+            postService.AddNew(model.GetDomainObject(), model.BlogId);
 
             return RedirectToAction("List");
         }

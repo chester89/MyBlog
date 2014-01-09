@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using AutoMapper;
 using FluentValidation.Mvc;
+using MyBlog.Core.Contracts;
 using MyBlog.Core.Entities;
 using MyBlog.Core.Models;
 using MyBlog.Infrastructure;
@@ -46,6 +47,10 @@ namespace MyBlog.Web
             RegisterRoutes(RouteTable.Routes);
 
             DependencyResolver.SetResolver(new StructureMapDependencyResolver(new MvcRegistry()));
+
+            var allStartables = DependencyResolver.Current.GetServices<IStartable>();
+
+            allStartables.Select(x => x.Start());
 
             FluentValidationModelValidatorProvider.Configure(cfg =>
             {

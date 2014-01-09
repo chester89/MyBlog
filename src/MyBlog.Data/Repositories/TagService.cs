@@ -10,57 +10,81 @@ using NHibernate.Linq;
 
 namespace MyBlog.Data.Repositories
 {
-    public class TagService: ITagService
+    public class TagService: ITagService, IStartable
     {
-        private readonly ISession _session;
+        private readonly ISession session;
         private readonly ObjectCache cache;
         private string tagsKey = "Tags";
+        private string tagsByPostKey = "TagsByPost";
 
         public TagService(ISession session, ObjectCache cache)
         {
-            _session = session;
+            this.session = session;
             this.cache = cache;
         }
 
-        public void CalculateTagCounters()
+        private Dictionary<int, string[]> TagsByPost
         {
-            var allPosts = _session.Query<BlogPost>().AsEnumerable().Select(x => new
-            {
-                id = x.Id, 
-                title = x.Title, 
-                text = x.Text,
-                created = x.Created,
-                slug = x.Slug,
-                blog = x.Blog.Name,
-                blogAuthor = x.Blog.Author.DisplayName,
-                tags = x.Tags.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
-            }).ToList();
-
-            var tagModel = allPosts.SelectMany(t => t.tags).GroupBy(t => t).ToDictionary(g => g.Key, g => g.Count())
-                .Select(x => new TagModel()
-            {
-                Name = x.Key,
-                PostCount = x.Value
-            }).ToArray();
-
-            cache.Set(tagsKey, tagModel, DateTimeOffset.UtcNow.AddDays(100));
+            get { return cache.Get(tagsByPostKey) as Dictionary<int, string[]>; }
         }
 
-        string[] TagsByPost(Int32 postId)
+        TagModel[] AllTags
         {
-            return _session.Query<BlogPost>().SingleOrDefault(p => p.Id == postId).Tags.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+            get { return cache.Get(tagsKey) as TagModel[]; }
+        }
+
+        string[] Split(string allTags)
+        {
+            return allTags.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries).Select(x => x.Trim()).ToArray();
+        }
+
+        public void UpdateTags(BlogPost newPost)
+        {
+            var newTags = Split(newPost.Tags));
+            if (newTags.Any())
+            {
+                var counters = AllTags;
+                foreach (var newTag in newTags)
+                {
+                    if (counters.Select(x => x.Name).Contains(newTag))
+                    {
+                        counters.SingleOrDefault(x => x.Name == newTag).PostCount += 1;
+                    }
+                }
+
+                cache.Set(tagsKey, counters, DateTimeOffset.UtcNow.AddDays(100));
+            }
         }
 
         public TagModel[] ByPost(Int32 postId)
         {
-            var tagCounters = cache.Get(tagsKey) as TagModel[];
-            var postTag = TagsByPost(postId);
-            return tagCounters.Where(t => postTag.Contains(t.Name)).ToArray();
+            var postTag = TagsByPost[postId];
+            return AllTags.Where(t => postTag.Contains(t.Name)).ToArray();
         }
 
         public TagModel[] Cloud()
         {
-            return new TagModel[];
+            return AllTags;
+        }
+
+        public void Start()
+        {
+            var allPosts = session.Query<BlogPost>().AsEnumerable().Select(x => new
+            {
+                id = x.Id,
+                tags = Split(x.Tags)
+            }).ToList();
+
+            var tagModel = allPosts.SelectMany(t => t.tags).GroupBy(t => t).ToDictionary(g => g.Key, g => g.Count())
+                .Select(x => new TagModel()
+                {
+                    Name = x.Key,
+                    PostCount = x.Value
+                }).ToArray();
+
+            cache.Set(tagsKey, tagModel, DateTimeOffset.UtcNow.AddDays(100));
+
+            cache.Set(tagsByPostKey, allPosts.ToDictionary(x => x.id, x => x.tags), DateTimeOffset.UtcNow.AddDays(50));
         }
     }
 }
