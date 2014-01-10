@@ -34,8 +34,8 @@ namespace MyBlog.Web
 
             routes.MapRoute(
                 "Default", // Route name
-                "{controller}/{action}/{id}", // URL with parameters
-                new { controller = "Home", action = "Default", id = UrlParameter.Optional } // Parameter defaults
+                "blog", // URL with parameters
+                new { controller = "Posts", action = "List" } // Parameter defaults
             );
         }
 
@@ -46,11 +46,11 @@ namespace MyBlog.Web
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
 
-            DependencyResolver.SetResolver(new StructureMapDependencyResolver(new MvcRegistry()));
+            var resolver = new StructureMapDependencyResolver(new MvcRegistry());
+            DependencyResolver.SetResolver(resolver);
 
-            var allStartables = DependencyResolver.Current.GetServices<IStartable>().ToList();
-
-            allStartables.ForEach(x => x.Start());
+            var allStartables = resolver.GetServices<IStartable>().ToList();
+            allStartables.ForEach(x => x.Init());
 
             FluentValidationModelValidatorProvider.Configure(cfg =>
             {

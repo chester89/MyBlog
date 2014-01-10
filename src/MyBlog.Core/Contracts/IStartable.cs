@@ -7,6 +7,6 @@ namespace MyBlog.Core.Contracts
 {
     public interface IStartable
     {
-        void Start();
+        void Init();
     }
 }
