@@ -37,8 +37,7 @@
     <ul class="tag_box">
         @foreach (var tag in Model.Tags)
         {
-            //@Url.Action("Default", "Tag", new { name = tag.Name })
-            <li><a href="http://google.com">@tag.Name <span>@tag.PostCount</span></a></li>
+            <li><a href="@Url.RouteUrl("PostsByTag", new { name = tag.Name })">@tag.Name <span>@tag.PostCount</span></a></li>
         }
     </ul>
 }
