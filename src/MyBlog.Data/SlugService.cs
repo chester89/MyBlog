@@ -4,23 +4,21 @@ using System.Linq;
 using System.Text;
 using MyBlog.Core.Contracts;
 using MyBlog.Core.Entities;
-using NHibernate;
-using NHibernate.Linq;
 
 namespace MyBlog.Data
 {
     public class SlugService: ISlugService
     {
-        private readonly ISession session;
+        private readonly IRepository<BlogPost> repository;
 
-        public SlugService(ISession session)
+        public SlugService(IRepository<BlogPost> repository)
         {
-            this.session = session;
+            this.repository = repository;
         }
 
         public int GetPostId(string slug)
         {
-            var post = session.Query<BlogPost>().SingleOrDefault(x => x.Slug == slug);
+            var post = repository.Get(x => x.Slug == slug).SingleOrDefault();
             if (post != null)
             {
                 return post.Id;
@@ -32,7 +30,7 @@ namespace MyBlog.Data
         {
             var firstAttempt = title.Replace(" ", "-").Trim();
 
-            if (session.Query<BlogPost>().Any(bp => bp.Slug == firstAttempt))
+            if (repository.GetAll().Any(bp => bp.Slug == firstAttempt))
             {
                 firstAttempt += "";
             }

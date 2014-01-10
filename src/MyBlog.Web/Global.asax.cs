@@ -66,6 +66,9 @@ namespace MyBlog.Web
             Mapper.CreateMap<PostReadModel, PostModel>()
                 .ForMember(x => x.DisqusShortName, mo => mo.MapFrom(prm => ConfigurationManager.AppSettings["DisqusShortName"]));
             Mapper.CreateMap<BlogPost, PostModel>();
+            Mapper.CreateMap<BlogPost, PostReadModel>()
+                .ForMember(x => x.Tags, mo => mo.Ignore())
+                .ForMember(x => x.Created, mo => mo.MapFrom(bp => bp.Created.ToDateTimeUtc()));
             Mapper.CreateMap<IEnumerable<PostReadModel>, PostListModel>()
                   .ForMember(x => x.Posts, x => x.MapFrom(t => t));
         }

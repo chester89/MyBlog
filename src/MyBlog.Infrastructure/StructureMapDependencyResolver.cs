@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,7 +17,11 @@ namespace MyBlog.Infrastructure
         public StructureMapDependencyResolver(Registry registry)
         {
             container = new Container(registry);
-            container.Configure(x => x.AddRegistry<NhRegistry>());
+            container.Configure(x => x.Scan(sc =>
+                {
+                    sc.TheCallingAssembly();
+                    sc.LookForRegistries();
+                }));
         }
 
         public object GetService(Type serviceType)
@@ -30,7 +35,7 @@ namespace MyBlog.Infrastructure
 
         public IEnumerable<object> GetServices(Type serviceType)
         {
-            return container.GetAllInstances<object>().Where(s => s.GetType() == serviceType);
+            return container.GetAllInstances(serviceType).Cast<Object>();
         }
 
         public void DisposeOfHttpCachedObjects()

@@ -58,6 +58,7 @@
     <Compile Include="InjectionActionInvoker.cs" />
     <Compile Include="NhRegistry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceRegistry.cs" />
     <Compile Include="StructureMapDependencyResolver.cs" />
     <Compile Include="StructureMapValidatorFactory.cs" />
   </ItemGroup>
