@@ -48,9 +48,9 @@ namespace MyBlog.Web
 
             DependencyResolver.SetResolver(new StructureMapDependencyResolver(new MvcRegistry()));
 
-            var allStartables = DependencyResolver.Current.GetServices<IStartable>();
+            var allStartables = DependencyResolver.Current.GetServices<IStartable>().ToList();
 
-            allStartables.Select(x => x.Start());
+            allStartables.ForEach(x => x.Start());
 
             FluentValidationModelValidatorProvider.Configure(cfg =>
             {

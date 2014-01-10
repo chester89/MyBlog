@@ -6,7 +6,7 @@ using FluentValidation;
 using StructureMap;
 using StructureMap.Configuration.DSL;
 
-namespace MyBlog.Web
+namespace MyBlog.Infrastructure
 {
     public class StructureMapValidatorFactory : ValidatorFactoryBase
     {

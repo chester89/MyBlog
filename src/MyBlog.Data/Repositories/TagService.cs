@@ -14,8 +14,8 @@ namespace MyBlog.Data.Repositories
     {
         private readonly ISession session;
         private readonly ObjectCache cache;
-        private string tagsKey = "Tags";
-        private string tagsByPostKey = "TagsByPost";
+        private const string tagsKey = "Tags";
+        private const string tagsByPostKey = "TagsByPost";
 
         public TagService(ISession session, ObjectCache cache)
         {
@@ -40,15 +40,23 @@ namespace MyBlog.Data.Repositories
 
         public void UpdateTags(BlogPost newPost)
         {
-            var newTags = Split(newPost.Tags));
+            var newTags = Split(newPost.Tags);
             if (newTags.Any())
             {
-                var counters = AllTags;
+                var counters = AllTags.ToList();
                 foreach (var newTag in newTags)
                 {
                     if (counters.Select(x => x.Name).Contains(newTag))
                     {
                         counters.SingleOrDefault(x => x.Name == newTag).PostCount += 1;
+                    }
+                    else
+                    {
+                        counters.Add(new TagModel()
+                        {
+                            Name = newTag, 
+                            PostCount = 1
+                        });
                     }
                 }
 
