@@ -33,8 +33,14 @@ namespace MyBlog.Web
             );
 
             routes.MapRoute(
+                "BlogMain", // Route name
+                "blog",
+                new { controller = "Posts", action = "List" } // Parameter defaults
+            );
+
+            routes.MapRoute(
                 "Default", // Route name
-                "blog", // URL with parameters
+                string.Empty,
                 new { controller = "Posts", action = "List" } // Parameter defaults
             );
         }
