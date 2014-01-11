@@ -29,22 +29,13 @@ namespace MyBlog.Web.Controllers
         [HttpGet]
         public ActionResult PostsFor(string tag)
         {
-            return Json("ok");
-            //var posts = new List<PostReadModel>();
-            //if (string.IsNullOrEmpty(tag))
-            //{
-            //    posts = postService.List().ToList();
-            //}
-            //else
-            //{
-            //    posts = tagService.PostsByTag(tag);
-            //}
+            var posts = (string.IsNullOrEmpty(tag) ? postService.List(): tagService.PostsByTag(tag)).ToList();
 
-            //return View(new PostsByTagViewModel()
-            //    {
-            //        Tag = tag, 
-            //        Posts = posts
-            //    });
+            return View(new PostsByTagViewModel()
+                {
+                    Tag = tag,
+                    Posts = posts
+                });
         }
     }
 }
