@@ -12,5 +12,6 @@ namespace MyBlog.Core.Contracts
         void AddNew(BlogPost newPost, int blogId);
         PostReadModel Read(int postId);
         IEnumerable<PostReadModel> List();
+        IEnumerable<PostReadModel> ByTag(string tag);
     }
 }

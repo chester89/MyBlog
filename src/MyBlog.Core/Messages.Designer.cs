@@ -239,5 +239,14 @@ namespace MyBlog.Core {
                 return ResourceManager.GetString("Posts_View_Title", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Posts with {0} tag.
+        /// </summary>
+        public static string Tags_PostList_Title {
+            get {
+                return ResourceManager.GetString("Tags_PostList_Title", resourceCulture);
+            }
+        }
     }
 }

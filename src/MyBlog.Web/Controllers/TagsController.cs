@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MyBlog.Core.Contracts;
-using MyBlog.Core.Models;
+using MyBlog.Web.Models;
 
 namespace MyBlog.Web.Controllers
 {
@@ -29,12 +29,12 @@ namespace MyBlog.Web.Controllers
         [HttpGet]
         public ActionResult PostsFor(string tag)
         {
-            var posts = (string.IsNullOrEmpty(tag) ? postService.List(): tagService.PostsByTag(tag)).ToList();
+            var posts = (string.IsNullOrEmpty(tag) ? postService.List(): postService.ByTag(tag)).ToList();
 
             return View(new PostsByTagViewModel()
                 {
                     Tag = tag,
-                    Posts = posts
+                    Posts = AutoMapper.Mapper.Map<ICollection<PostModel>>(posts) 
                 });
         }
     }

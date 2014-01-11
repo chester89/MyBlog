@@ -15,13 +15,15 @@ namespace MyBlog.Data.Repositories
         private readonly IRepository<BlogPost> postRepository;
         private readonly IShortenAlgorithm shorten;
         private readonly ITagService tagService;
+        private readonly ICacheRepository cache;
 
-        public PostService(IRepository<Blog> blogRepository, IRepository<BlogPost> postRepository, IShortenAlgorithm shorten, ITagService tagService)
+        public PostService(IRepository<Blog> blogRepository, IRepository<BlogPost> postRepository, IShortenAlgorithm shorten, ITagService tagService, ICacheRepository cache)
         {
             this.blogRepository = blogRepository;
             this.postRepository = postRepository;
             this.shorten = shorten;
             this.tagService = tagService;
+            this.cache = cache;
         }
 
         public void AddNew(BlogPost newPost, int blogId)
@@ -30,6 +32,7 @@ namespace MyBlog.Data.Repositories
             newPost.Blog = blog;
             postRepository.Update(newPost);
             tagService.UpdateTags(newPost);
+            cache.AddNewPost(newPost);
         }
 
         public PostReadModel Read(int postId)
@@ -47,6 +50,18 @@ namespace MyBlog.Data.Repositories
                     p.Tags = tagService.ByPost(p.Id);
                     p.Text = shorten.Shorten(p.Text);
                 });
+            return posts;
+        }
+
+        public IEnumerable<PostReadModel> ByTag(string tag)
+        {
+            var postIds = cache.TagsByPost.Where(x => x.Value.Contains(tag)).Select(x => x.Key);
+            var posts = cache.Posts.Where(p => postIds.Contains(p.Id)).Select(Mapper.Map<PostReadModel>).ToList();
+            posts.ForEach(p =>
+            {
+                p.Tags = tagService.ByPost(p.Id);
+                p.Text = shorten.Shorten(p.Text);
+            });
             return posts;
         }
     }

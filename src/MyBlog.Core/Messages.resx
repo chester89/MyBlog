@@ -177,4 +177,7 @@
   <data name="Posts_View_Title" xml:space="preserve">
     <value>{0} - {1}</value>
   </data>
+  <data name="Tags_PostList_Title" xml:space="preserve">
+    <value>Posts with {0} tag</value>
+  </data>
 </root>

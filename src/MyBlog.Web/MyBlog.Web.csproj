@@ -94,6 +94,7 @@
     <Compile Include="Models\CreatePostModel.cs" />
     <Compile Include="Models\PostListModel.cs" />
     <Compile Include="Models\PostModel.cs" />
+    <Compile Include="Models\PostsByTagViewModel.cs" />
     <Compile Include="MvcHtmlStringExtensions.cs" />
     <Compile Include="MvcRegistry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -538,6 +539,7 @@
     <Content Include="Views\Posts\Default.cshtml" />
     <Content Include="Views\Posts\List.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Tags\PostsFor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
