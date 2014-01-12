@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Extensions2;
 using MyBlog.Core.Contracts;
 
 namespace MyBlog.Data
@@ -10,9 +11,13 @@ namespace MyBlog.Data
     {
         public string Shorten(string content)
         {
-            //CKEditor adds NewLine at the start of the string, so - find a 2nd occurrence of NewLine in a string and truncate string after it
-            var delimiterPosition = content.IndexOf(Environment.NewLine, StringComparison.InvariantCulture);
-            return content.Substring(0, delimiterPosition == -1 ? content.Length : delimiterPosition);
+            var delimiterPositions = content.SubstringPositions(Environment.NewLine).ToArray();
+            if (delimiterPositions.Count() >= 2)
+            {
+                var substring = content.SubstringOnIndex(0, delimiterPositions[1] - 1);
+                return substring;
+            }
+            return content;
         }
     }
 }
