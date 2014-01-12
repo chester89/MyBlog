@@ -95,9 +95,10 @@
                     <div class="span3 pull-right">
                         My name is Gleb and I'm a web developer
                         <div id="tagCloud" class="tag_box">
+                            Topics I blog about:
                             <!-- ko foreach: tags -->
                             <a data-bind="attr: { href: url }">
-                                <span data-bind="text: name"></span> 
+                                <text data-bind="text: name"></text> 
                                 <span data-bind="text: postCount"></span>
                             </a>
                             <!-- /ko -->

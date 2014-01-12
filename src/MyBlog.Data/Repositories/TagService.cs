@@ -51,7 +51,7 @@ namespace MyBlog.Data.Repositories
 
         public TagModel[] Cloud()
         {
-            return cache.Tags.OrderBy(x => x.Name).ToArray();
+            return cache.Tags.OrderByDescending(x => x.PostCount).ThenBy(x => x.Name).ToArray();
         }
     }
 }
